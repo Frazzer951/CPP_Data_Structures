@@ -53,7 +53,7 @@ T vector<T>::back()
 }
 
 template<typename T>
-inline void vector<T>::push_back( T value )
+void vector<T>::push_back( T value )
 {
   if( _size == _max_size ) _expand();
   _arr[_size] = value;
@@ -61,19 +61,19 @@ inline void vector<T>::push_back( T value )
 }
 
 template<typename T>
-inline void vector<T>::pop_back()
+void vector<T>::pop_back()
 {
   _size--;
 }
 
 template<typename T>
-inline void vector<T>::insert( unsigned int index, T value )
+void vector<T>::insert( unsigned int index, T value )
 {}
 
 template<typename T>
-inline void vector<T>::erase( unsigned int index )
+void vector<T>::erase( unsigned int index )
 {}
 
 template<typename T>
-inline void vector<T>::clear()
+void vector<T>::clear()
 {}
