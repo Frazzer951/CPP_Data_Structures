@@ -1,6 +1,49 @@
+#pragma once
+
 #include <stdexcept>
 
-#include "vector.hpp"
+template<typename T>
+class vector
+{
+  T *          _arr;
+  unsigned int _size;
+  unsigned int _max_size;
+
+  void _expand();
+
+public:
+  // Constructor
+  vector();
+
+  // Destructor
+  ~vector();
+
+  // Getter
+  unsigned int size();
+  unsigned int max_size();
+  bool         empty();
+  T            at( unsigned int index );
+  T            front();
+  T            back();
+
+  // Setter
+  void push_back( T value );
+  void pop_back();
+  void insert( unsigned int index, T value );
+  void erase( unsigned int index );
+  void clear();
+};
+
+template<typename T>
+vector<T>::vector() : _arr( new T[1] ), _size( 0 ), _max_size( 1 )
+{}
+
+template<typename T>
+vector<T>::~vector()
+{
+  delete _arr;
+}
+
 
 template<typename T>
 void vector<T>::_expand()

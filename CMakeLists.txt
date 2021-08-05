@@ -35,17 +35,22 @@ if(NOT googletest_POPULATED)
   add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
 endif()
 
-# include_directories(include)
+include_directories(include)
 
 file(GLOB test_files
      "tests/*.cpp"
 )
 
-add_library(fvector src/vector.cpp)
-target_include_directories(fvector PUBLIC include/vector)
+file(GLOB src_files
+     "src/*.cpp"
+)
 
-add_executable(${PROJECT_NAME}_tests ${test_files})
-target_link_libraries(${PROJECT_NAME}_tests gtest_main fvector)
+file(GLOB include_files
+     "include/*.cpp"
+)
+
+add_executable(${PROJECT_NAME}_tests ${test_files} ${src_files} ${include_files})
+target_link_libraries(${PROJECT_NAME}_tests gtest_main)
 
 gtest_discover_tests(${PROJECT_NAME}_tests)
 
