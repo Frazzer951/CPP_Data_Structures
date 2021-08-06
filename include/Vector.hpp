@@ -6,8 +6,8 @@ template<typename T>
 class vector
 {
   T *          _arr;
-  unsigned int _size{ 0 };
-  unsigned int _max_size{ 1 };
+  unsigned int _size { 0 };
+  unsigned int _max_size { 1 };
 
   void _expand();
 
@@ -35,7 +35,7 @@ public:
 };
 
 template<typename T>
-vector<T>::vector() : _arr( new T[1] ),  
+vector<T>::vector() : _arr( new T[1] )
 {}
 
 template<typename T>
