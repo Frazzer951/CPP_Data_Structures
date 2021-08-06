@@ -44,7 +44,6 @@ vector<T>::~vector()
   delete[] _arr;
 }
 
-
 template<typename T>
 void vector<T>::_expand()
 {

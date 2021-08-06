@@ -22,38 +22,24 @@ include(FetchContent)
 include(GoogleTest)
 enable_testing()
 
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG        master
-)
+add_library(Vector src/Vector.cpp)
+target_include_directories(Vector PUBLIC include)
 
-FetchContent_GetProperties(googletest)
-if(NOT googletest_POPULATED)
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-  option(BUILD_GMOCK "Builds the googlemock subproject" OFF)
-  option(INSTALL_GTEST "Enable installation of googletest." OFF)
-  FetchContent_Populate(googletest)
-  add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
-endif()
+add_subdirectory(tests)
 
-include_directories(include)
-
-file(GLOB test_files
-     "tests/*.cpp"
-)
+add_library(${PROJECT_NAME} src/main.cpp )
+target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_link_libraries(${PROJECT_NAME} Vector)
 
 file(GLOB src_files
      "src/*.cpp"
 )
 
 file(GLOB include_files
-     "include/*.cpp"
+     "include/*.hpp"
 )
 
-add_executable(${PROJECT_NAME}_tests ${test_files} ${src_files} ${include_files})
-target_link_libraries(${PROJECT_NAME}_tests gtest_main)
-
-gtest_discover_tests(${PROJECT_NAME}_tests)
-
-target_clangformat_setup(${PROJECT_NAME}_tests)
+clangformat_setup(
+  ${src_files}
+  ${include_files}
+)
