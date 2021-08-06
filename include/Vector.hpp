@@ -6,8 +6,8 @@ template<typename T>
 class vector
 {
   T *          _arr;
-  unsigned int _size;
-  unsigned int _max_size;
+  unsigned int _size{ 0 };
+  unsigned int _max_size{ 1 };
 
   void _expand();
 
@@ -35,13 +35,13 @@ public:
 };
 
 template<typename T>
-vector<T>::vector() : _arr( new T[1] ), _size( 0 ), _max_size( 1 )
+vector<T>::vector() : _arr( new T[1] ),  
 {}
 
 template<typename T>
 vector<T>::~vector()
 {
-  delete _arr;
+  delete[] _arr;
 }
 
 
@@ -51,7 +51,7 @@ void vector<T>::_expand()
   _max_size    = _max_size * 2;
   T * _new_arr = new T[_max_size];
   for( unsigned int i = 0; i < _size; i++ ) { _new_arr[i] = _arr[i]; }
-  delete _arr;
+  delete[] _arr;
   _arr = _new_arr;
 }
 
