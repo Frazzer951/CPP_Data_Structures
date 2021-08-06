@@ -75,7 +75,6 @@ bool vector<T>::empty()
 template<typename T>
 T vector<T>::at( unsigned int index )
 {
-  if( index < 0 ) throw std::out_of_range( "Index must be a positive value" );
   if( index >= _size ) throw std::out_of_range( "Index Out of Range" );
   return _arr[index];
 }
