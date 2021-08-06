@@ -31,6 +31,10 @@ add_library(${PROJECT_NAME} src/main.cpp )
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_link_libraries(${PROJECT_NAME} Vector)
 
+file(GLOB test_files
+     "tests/*.cpp"
+)
+
 file(GLOB src_files
      "src/*.cpp"
 )
@@ -40,6 +44,7 @@ file(GLOB include_files
 )
 
 clangformat_setup(
+  ${test_files}
   ${src_files}
   ${include_files}
 )

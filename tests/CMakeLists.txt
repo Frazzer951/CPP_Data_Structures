@@ -33,4 +33,4 @@ target_link_libraries(${PROJECT_NAME} gtest_main FrazStructs)
 
 gtest_discover_tests(${PROJECT_NAME})
 
-target_clangformat_setup(${PROJECT_NAME})
+# target_clangformat_setup(${PROJECT_NAME})
