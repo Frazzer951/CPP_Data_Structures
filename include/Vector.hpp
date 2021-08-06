@@ -111,12 +111,22 @@ void vector<T>::pop_back()
 
 template<typename T>
 void vector<T>::insert( unsigned int index, T value )
-{}
+{
+  if( _size == _max_size ) _expand();
+  for( auto i = _size; i > index; i-- ) { _arr[i] = _arr[i - 1]; }
+  _arr[index] = value;
+  _size++;
+}
 
 template<typename T>
 void vector<T>::erase( unsigned int index )
-{}
+{
+  for( auto i = index; i < _size; i++ ) { _arr[i] = _arr[i + 1]; }
+  _size--;
+}
 
 template<typename T>
 void vector<T>::clear()
-{}
+{
+  _size = 0;
+}

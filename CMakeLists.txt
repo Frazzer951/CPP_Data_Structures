@@ -31,6 +31,8 @@ FetchContent_Declare(
 FetchContent_GetProperties(googletest)
 if(NOT googletest_POPULATED)
   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  option(BUILD_GMOCK "Builds the googlemock subproject" OFF)
+  option(INSTALL_GTEST "Enable installation of googletest." OFF)
   FetchContent_Populate(googletest)
   add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
 endif()
