@@ -32,5 +32,3 @@ add_executable(${PROJECT_NAME} ${Sources})
 target_link_libraries(${PROJECT_NAME} gtest_main Vector LinkedList)
 
 gtest_discover_tests(${PROJECT_NAME})
-
-# target_clangformat_setup(${PROJECT_NAME})

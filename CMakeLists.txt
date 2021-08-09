@@ -28,15 +28,15 @@ target_include_directories(Vector INTERFACE include/Vector)
 add_library(LinkedList INTERFACE)
 target_include_directories(LinkedList INTERFACE include/LinkedList)
 
-file(GLOB test_files
+file(GLOB_RECURSE test_files
      "tests/*.cpp"
 )
 
-file(GLOB src_files
+file(GLOB_RECURSE src_files
      "src/*.cpp"
 )
 
-file(GLOB include_files
+file(GLOB_RECURSE include_files
      "include/*.hpp"
 )
 
