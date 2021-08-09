@@ -39,3 +39,15 @@ LinkedList<T>::~LinkedList()
 {
   delete head;
 }
+
+template<typename T>
+inline node<T> LinkedList<T>::front()
+{
+return head;
+}
+
+template<typename T>
+inline bool LinkedList<T>::empty()
+{
+ return head == nullptr;
+}

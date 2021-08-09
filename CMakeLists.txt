@@ -22,7 +22,11 @@ include(FetchContent)
 include(GoogleTest)
 enable_testing()
 
-include_directories(include)
+add_library(Vector INTERFACE)
+target_include_directories(Vector INTERFACE include/Vector)
+
+add_library(LinkedList INTERFACE)
+target_include_directories(LinkedList INTERFACE include/LinkedList)
 
 file(GLOB test_files
      "tests/*.cpp"
@@ -38,7 +42,8 @@ file(GLOB include_files
 
 add_subdirectory(tests)
 
-add_executable(${PROJECT_NAME} ${src_files} ${include_files} )
+add_executable(${PROJECT_NAME} ${src_files} )
+target_link_libraries(${PROJECT_NAME} Vector LinkedList)
 
 clangformat_setup(
   ${test_files}
