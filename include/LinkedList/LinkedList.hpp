@@ -42,19 +42,19 @@ LinkedList<T>::~LinkedList()
 }
 
 template<typename T>
-inline node<T> * LinkedList<T>::front()
+node<T> * LinkedList<T>::front()
 {
   return head;
 }
 
 template<typename T>
-inline bool LinkedList<T>::empty()
+bool LinkedList<T>::empty()
 {
   return head == nullptr;
 }
 
 template<typename T>
-inline void LinkedList<T>::clear()
+void LinkedList<T>::clear()
 {
   node<T> * cur = head;
   head          = nullptr;
@@ -68,15 +68,15 @@ inline void LinkedList<T>::clear()
 }
 
 template<typename T>
-inline void LinkedList<T>::push_front( T value )
+void LinkedList<T>::push_front( T value )
 {
-  node<T> * newNode = new node<T>( value );
-  newNode->next     = head;
-  head              = newNode;
+  auto * newNode = new node<T>( value );
+  newNode->next  = head;
+  head           = newNode;
 }
 
 template<typename T>
-inline void LinkedList<T>::pop_front()
+void LinkedList<T>::pop_front()
 {
   node<T> * tmp = head;
   head          = head->next;
@@ -84,17 +84,17 @@ inline void LinkedList<T>::pop_front()
 }
 
 template<typename T>
-inline void LinkedList<T>::insert_after( node<T> * node, T value )
+void LinkedList<T>::insert_after( node<T> * n, T value )
 {
-  node<T> * newNode = new node<T>( value );
-  newNode->next     = node->next;
-  node->next        = newNode;
+  auto * newNode = new node<T>( value );
+  newNode->next  = n->next;
+  n->next        = newNode;
 }
 
 template<typename T>
-inline void LinkedList<T>::erase_after( node<T> * node )
+void LinkedList<T>::erase_after( node<T> * n )
 {
-  node<T> * tmp = node->next;
-  node          = tmp->next;
+  node<T> * tmp = n->next;
+  n             = tmp->next;
   delete tmp;
 }
