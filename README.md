@@ -3,4 +3,11 @@
 [![CMake](https://github.com/Frazzer951/CPP_Data_Structures/actions/workflows/cmake.yml/badge.svg)](https://github.com/Frazzer951/CPP_Data_Structures/actions/workflows/cmake.yml)
 
 # CPP_Data_Structures
-My Implimentation of the C++ Data Structures
+My Implementation of the C++ Data Structures
+
+## Structures ToDo
+Binary Search Tree
+Linked List
+Doubly Linked List
+Queue
+Stack

@@ -22,14 +22,11 @@ include(FetchContent)
 include(GoogleTest)
 enable_testing()
 
-add_library(Vector src/Vector.cpp)
-target_include_directories(Vector PUBLIC include)
+include_directories(include)
 
 add_subdirectory(tests)
 
-add_library(${PROJECT_NAME} src/main.cpp )
-target_include_directories(${PROJECT_NAME} PUBLIC include)
-target_link_libraries(${PROJECT_NAME} Vector)
+add_executable(${PROJECT_NAME} src/main.cpp )
 
 file(GLOB test_files
      "tests/*.cpp"
