@@ -24,10 +24,6 @@ enable_testing()
 
 include_directories(include)
 
-add_subdirectory(tests)
-
-add_executable(${PROJECT_NAME} src/main.cpp )
-
 file(GLOB test_files
      "tests/*.cpp"
 )
@@ -39,6 +35,10 @@ file(GLOB src_files
 file(GLOB include_files
      "include/*.hpp"
 )
+
+add_subdirectory(tests)
+
+add_executable(${PROJECT_NAME} ${src_files} ${include_files} )
 
 clangformat_setup(
   ${test_files}
