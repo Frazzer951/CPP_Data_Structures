@@ -7,7 +7,6 @@ My Implementation of the C++ Data Structures
 
 ## Structures ToDo
 Binary Search Tree
-Linked List
 Doubly Linked List
 Queue
 Stack

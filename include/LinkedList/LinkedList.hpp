@@ -1,3 +1,5 @@
+#include <iostream>
+#include <stdexcept>
 template<typename T>
 struct node
 {
@@ -78,6 +80,7 @@ void LinkedList<T>::push_front( T value )
 template<typename T>
 void LinkedList<T>::pop_front()
 {
+  if( empty() ) throw std::out_of_range( "LinkedList is empty" );
   node<T> * tmp = head;
   head          = head->next;
   delete tmp;
@@ -94,7 +97,29 @@ void LinkedList<T>::insert_after( node<T> * n, T value )
 template<typename T>
 void LinkedList<T>::erase_after( node<T> * n )
 {
+  if( empty() ) throw std::out_of_range( "LinkedList is empty" );
   node<T> * tmp = n->next;
-  n             = tmp->next;
+  n->next       = tmp->next;
   delete tmp;
+}
+
+template<typename T>
+bool operator==( const node<T> & lhs, const node<T> & rhs )
+{
+  return lhs.val == rhs.val && *lhs.next == *rhs.next;
+}
+
+template<typename T>
+bool operator==( const LinkedList<T> & lhs, const LinkedList<T> & rhs )
+{
+  return *lhs.head() == *rhs.head();
+}
+
+template<typename T>
+std::ostream & operator<<( std::ostream & s, LinkedList<T> const & data )
+{
+  node<T> cur = data.head();
+  s << cur.val;
+  while( cur != nullptr ) { s << "->" << cur.val; }
+  return s;
 }
