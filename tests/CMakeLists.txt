@@ -29,6 +29,6 @@ file(GLOB Sources
 )
 
 add_executable(${PROJECT_NAME} ${Sources})
-target_link_libraries(${PROJECT_NAME} gtest_main Vector LinkedList)
+target_link_libraries(${PROJECT_NAME} gtest_main Vector LinkedList BinarySearchTree DoublyLinkedList Queue Stack)
 
 gtest_discover_tests(${PROJECT_NAME})

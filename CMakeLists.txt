@@ -28,6 +28,18 @@ target_include_directories(Vector INTERFACE include/Vector)
 add_library(LinkedList INTERFACE)
 target_include_directories(LinkedList INTERFACE include/LinkedList)
 
+add_library(BinarySearchTree INTERFACE)
+target_include_directories(BinarySearchTree INTERFACE include/BinarySearchTree)
+
+add_library(DoublyLinkedList INTERFACE)
+target_include_directories(DoublyLinkedList INTERFACE include/DoublyLinkedList)
+
+add_library(Queue INTERFACE)
+target_include_directories(Queue INTERFACE include/Queue)
+
+add_library(Stack INTERFACE)
+target_include_directories(Stack INTERFACE include/Stack)
+
 file(GLOB_RECURSE test_files
      "tests/*.cpp"
 )
@@ -43,7 +55,7 @@ file(GLOB_RECURSE include_files
 add_subdirectory(tests)
 
 add_executable(${PROJECT_NAME} ${src_files} )
-target_link_libraries(${PROJECT_NAME} Vector LinkedList)
+target_link_libraries(${PROJECT_NAME} Vector LinkedList BinarySearchTree DoublyLinkedList Queue Stack)
 
 clangformat_setup(
   ${test_files}
