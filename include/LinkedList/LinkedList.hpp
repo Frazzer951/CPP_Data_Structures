@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdexcept>
+
 template<typename T>
 struct node
 {
